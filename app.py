@@ -37,28 +37,6 @@ def predict():
 	output = {'results': int(result[0])}
 
 	return jsonify(results=output)
-	
-
-def predict():
-  	data = request.get_json(force=True)
-
- 	# convert data into dataframe
- 	X=data.split()
-	X=np.array(X).astype(float)
-
-	X_1=X[0:288].reshape(1,-1)
-	X_scaled=scaler.transform(X_1)
-	X_pca=pca.transform(X_scaled)
-	result=model.predict(X_pca)
-
- 	# predictions
- 	# result = model.predict(data_df)
-
- 	# send back to browser
- 	output = {'results': int(result[0])}
-
- 	# return data
- 	return jsonify(results=output)
 
 if __name__ == '__main__':
     app.run(port = 5000, debug=True)
