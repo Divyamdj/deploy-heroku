@@ -1,7 +1,8 @@
-from sklearn.externals import joblib
+# from sklearn.externals import joblib
 import numpy as np
 import pandas as pd
 from numpy import loadtxt
+import joblib
 from flask import Flask, jsonify, request, render_template
 
 model_file=r'E:\InfyU LABS Device Reading\App\Mango_UV_ShelfLife.pkl'
