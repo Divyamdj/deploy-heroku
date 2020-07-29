@@ -44,5 +44,5 @@ def predict():
 	# return jsonify(results=output)
 	return render_template('index.html', prediction_text='Output is: {}'.format(output))
 
-if __name__ == '__main__':
-    app.run(port = 5000, debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
