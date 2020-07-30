@@ -6,17 +6,11 @@ import joblib
 from flask import Flask, jsonify, request, render_template
 import pickle
 
-# model_file=r'E:\InfyU LABS Device Reading\App\Mango_UV_ShelfLife.pkl'
 model=joblib.load('Mango_UV_ShelfLife.pkl')
-# model=pickle.load(open('Mango_UV_ShelfLife.pkl', 'rb'))
 
-# scaler_file=r'E:\InfyU LABS Device Reading\App\Mango_UV_ShelfLife_scale.pkl'
 scaler=joblib.load('Mango_UV_ShelfLife_scale.pkl')
-# scaler=pickle.load(open('Mango_UV_ShelfLife_scale.pkl','rb'))
 
-# pca_file=r'E:\InfyU LABS Device Reading\App\Mango_UV_ShelfLife_pca.pkl'
 pca=joblib.load('Mango_UV_ShelfLife_pca.pkl')
-# pca=pickle.load(open('Mango_UV_ShelfLife_pca.pkl','rb'))
 
 # app
 app = Flask(__name__)
@@ -25,15 +19,13 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+# routes
 @app.route('/predict',methods=['POST'])
 
-# routes
-# @app.route('/', methods=['POST'])
 
 
 def predict():
-	# data = request.get_json(force=True)
-	data = request.form.getlist('NIR data')
+	data = request.form.getlist('UV data')
 
 	X=data[0].split()
 	X=np.array(X).astype(float)
